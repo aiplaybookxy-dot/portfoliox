@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // 1. NON-LAZY IMPORTS
 import { ThemeProvider, useTheme } from '../../context/ThemeContext'; // Import useTheme here
-import Welcome from '../../welcome';
+import Welcome from '../../Welcome';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 
