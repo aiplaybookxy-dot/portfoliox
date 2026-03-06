@@ -38,7 +38,7 @@ const Navbar = ({ errorMsg }) => { // Can accept errorMsg from a global state
             </AnimatePresence>
 
             <nav
-                className={`fixed font-display top-0 w-full z-100 backdrop-blur-md border-b transition-all duration-500 
+                className={`fixed font-display top-0 w-full z-100 backdrop-blur-md transition-all duration-500 
                     ${notification ? "mt-8" : "mt-0" 
                     } ${isLight ? "bg-primary/80 border-accent/10 text-accent" : "bg-accent/80 border-primary/10 text-primary"}`}
             >

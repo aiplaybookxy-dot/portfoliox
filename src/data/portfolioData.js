@@ -61,9 +61,9 @@ export const portfolioData = {
 
 
     // Add your other data here to keep it centralized
-    contact: {
-        email: "your@email.com",
-        linkedin: "linkedin.com/in/yourname",
-        github: "github.com/yourname"
+    contacts: { // Changed from an array [] to an object {} because you only have one set of links
+        email: "mailto:gordianemmanuel96@gmail.com",
+        linkedin: "https://linkedin.com/in/yourname",
+        github: "https://github.com/aiplaybookxy-dot",
     }
 };

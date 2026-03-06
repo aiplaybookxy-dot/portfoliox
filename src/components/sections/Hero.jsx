@@ -23,7 +23,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="hero" className="min-h-screen font-display flex items-center justify-center relative overflow-hidden">
+        <section id="hero" className="pt-25 font-display flex items-center justify-center relative overflow-hidden">
             {/* Animated Background Decor - Now using your palette */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className={`absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full blur-[120px] animate-pulse transition-colors duration-700 ${
@@ -40,7 +40,7 @@ const Hero = () => {
                 initial="hidden"
                 animate="visible"
             >
-                <motion.h1 variants={itemVariants} className="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase">
+                <motion.h1 variants={itemVariants} className="text-6xl md:text-7xl font-black tracking-tighter mb-8 uppercase">
                     Full Stack <br /> 
                     <span className={isLight ? "text-accent" : "text-primary"}>Developer</span>
                 </motion.h1>
