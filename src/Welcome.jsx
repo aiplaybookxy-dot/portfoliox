@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import MagneticButton from './components/common/MagneticButton';
+// import MagneticButton from './components/common/MagneticButton';
 
 const Welcome = () => {
     const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Welcome = () => {
                             duration: 1.5,
                             ease: [0.19, 1, 0.22, 1] // Custom "Power 4" ease for a more luxury feel
                         }}
-                        className=" ml-3 md:ml-0 font-bold md:text-3xl font-display text-blue-500 tracking-tighter"
+                        className=" ml-3 md:ml-0 text-3xl md:text-3xl font-display font-medium text-blue-500 tracking-tighter"
                     >
                         Asoegwu Emmanuel Chibuike.
                     </motion.h1>
@@ -88,13 +88,13 @@ const Welcome = () => {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{
-                        // duration: 1.5, // 1.5 seconds (long and slow)
-                        delay: 0.2
+                        duration: 1.5, // 1.5 seconds (long and slow)
+                        delay: 1.0
                     }}
                     onClick={handleEnter}
-                    className="px-8 py-2 border-2 text-blue-500 font-display font-bold hover:bg-blue-400 hover:text-white transition-all duration-300"
+                    className="px-8 py-2 border-2 text-blue-500 font-display font-medium hover:bg-blue-400 hover:text-white rounded transition-all duration-300"
                 >
-                    See Portfolio
+                    Check This Button
                 </motion.button>
             </motion.div>
         </div>
