@@ -1,8 +1,6 @@
-import { useState } from 'react'; // ADD THIS
 import { useForm } from '../../hooks/useForm';
 import Section from '../common/Section';
 import { useTheme } from "../../context/ThemeContext";
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Contact = () => {
     const { theme, showNotification } = useTheme();
@@ -22,9 +20,16 @@ const Contact = () => {
     );
 
     const sendMessage = async (data) => {
-        // RUTHLESS CHECK: Are these actually defined in your .env?
         const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
         const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+        // DEBUG CHECK: If these log as undefined in your browser console on Vercel, 
+        // you haven't added them to the Vercel Dashboard correctly.
+        if (!token || !chatId) {
+            console.error("Missing Environment Variables");
+            showNotification("✕ Configuration Error", "error");
+            return;
+        }
 
         const text = `🚀 *New Lead from Vidalab*\n\n` +
             `👤 *Name:* ${data.name}\n` +
@@ -42,16 +47,22 @@ const Contact = () => {
                 })
             });
 
-            if (!response.ok) throw new Error('API Error');
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Telegram API Error:", errorData);
+                throw new Error('API Error');
+            }
 
-            showNotification("✓ Message sent success");
+            showNotification("✓ Message sent successfully", "success");
         } catch (err) {
-            showNotification("✕ Message Failed");
+            console.error("Fetch Error:", err);
+            showNotification("✕ Transmission Failed", "error");
         }
     };
 
-    const inputClasses = `w-full px-4 py-4 bg-transparent border-b-2 transition-all outline-none rounded-none font-bold ${isLight ? "border-accent/20 focus:border-accent text-accent" : "border-primary/20 focus:border-primary text-primary"
-        }`;
+    const inputClasses = `w-full px-4 py-4 bg-transparent border-b-2 transition-all outline-none rounded-none font-bold ${
+        isLight ? "border-accent/20 focus:border-accent text-accent" : "border-primary/20 focus:border-primary text-primary"
+    }`;
 
     return (
         <Section id="contact" className="max-w-4xl mx-auto font-display py-24">
@@ -81,8 +92,10 @@ const Contact = () => {
 
                     <button
                         disabled={isSubmitting}
-                        className={`mt-8 py-5 px-10 font-black uppercase tracking-widest text-sm transition-all active:scale-95 ${isLight ? "bg-accent text-primary" : "bg-primary text-accent"
-                            } disabled:opacity-50`}
+                        type="submit"
+                        className={`mt-8 py-5 px-10 font-black uppercase tracking-widest text-sm transition-all active:scale-95 ${
+                            isLight ? "bg-accent text-primary" : "bg-primary text-accent"
+                        } disabled:opacity-50`}
                     >
                         {isSubmitting ? "TRANSMITTING..." : "SEND INQUIRY"}
                     </button>
